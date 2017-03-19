@@ -1,3 +1,16 @@
+/*
+Основное задание:
+
++Добавить сортировку по имени.
++Добавить сортировку по весу в порядке убывания.
++Добавить дропдаун с фильтрацией по типу.
++Вывести alert с именем покемона по клику на его картинку
++Вывести имя покемонов разными цветами: синим - если водный тип; красным - если огонь; зеленым - если трава (ng-class)
+
+Дополнительное задание:
++Вынести фильтр в контроллер.
+*/
+
 'use strict';
 
 angular.module('myApp.view1', ['ngRoute'])
@@ -9,6 +22,16 @@ angular.module('myApp.view1', ['ngRoute'])
         });
     }])
 
+    // фильтр по типу
+    .filter('type', function() {        
+        return function(v, nameType) {
+            return v.filter(function(i) {
+                if (nameType === 'all') return true;
+                return (i.type.some((x) => x === nameType));
+            });
+        };
+    })
+ 
     .controller('View1Ctrl', function ($scope) {
         $scope.pokemons = [{
             "abilities": [
@@ -121,5 +144,14 @@ angular.module('myApp.view1', ['ngRoute'])
         }];
 
         $scope.myOrderProperty = 'id';
+        $scope.myType = 'all';
 
+        // выводит имя
+        $scope.showName = function(name) {
+            console.log(name);
+            alert(name);
+        }
+        // цвет в зависимости от типа
+        $scope.colorByType = {fire: 'red', water: 'blue', grass: 'green'};
+     
     });
