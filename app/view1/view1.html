@@ -2,14 +2,8 @@
 <input ng-model="myQuery"><br><br>
 
 Тип:
-<select ng-model="myType">
-    <option value="all">&#171;..Все..&#187;</option>    
-    <option value="fire">Огненные</option>
-    <option value="water">Водные</option>
-    <option value="grass">Травяные</option>
-    <option value="electric">Электрические</option>
-    <option value="poison">Ядовитые</option>
-    <option value="normal">Нормальные</option>
+<select ng-model="myType" ng-options="type for type in getTypes()">
+    <option value="">--Все--</option>
 </select>
 <br><br>
 

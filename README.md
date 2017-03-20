@@ -1,3 +1,8 @@
+## Homework: Lesson4.1, AngularJS start
+```
+  npm start
+  http://localhost:8000/
+```
 # angular-seed — the seed for AngularJS apps
 
 This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app.

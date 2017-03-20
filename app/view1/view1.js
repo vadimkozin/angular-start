@@ -26,7 +26,7 @@ angular.module('myApp.view1', ['ngRoute'])
     .filter('type', function() {        
         return function(v, nameType) {
             return v.filter(function(i) {
-                if (nameType === 'all') return true;
+                if (!nameType) return true;
                 return (i.type.some((x) => x === nameType));
             });
         };
@@ -144,7 +144,6 @@ angular.module('myApp.view1', ['ngRoute'])
         }];
 
         $scope.myOrderProperty = 'id';
-        $scope.myType = 'all';
 
         // выводит имя
         $scope.showName = function(name) {
@@ -154,4 +153,13 @@ angular.module('myApp.view1', ['ngRoute'])
         // цвет в зависимости от типа
         $scope.colorByType = {fire: 'red', water: 'blue', grass: 'green'};
      
+        // список типов для раскрывающегося списка
+        $scope.getTypes = function() {
+            let arr = []; //['all'];
+            $scope.pokemons.forEach((v) => {
+                v.type.forEach((v) => { arr.push(v); });
+            });
+            return arr.sort();
+        }
+
     });
